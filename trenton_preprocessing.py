@@ -25,7 +25,7 @@ def main():
 	df = np.removeWorthlessAttributes(df)
 
 	# Output the updated dataframe to a new csv
-	df.to_csv(OUTPUT_DATA_FILE_NAME)
+	df.to_csv(OUTPUT_DATA_FILE_NAME, index=False)
 
 
 def replace_missing_type1_values(df):
