@@ -1,4 +1,5 @@
 import pandas as pd
+import noahProcess as np
 
 INPUT_DATA_FILE_NAME = "Pokemon.csv"
 OUTPUT_DATA_FILE_NAME = "trenton_pokemon.csv"
@@ -18,6 +19,10 @@ def main():
 
 	# Make all "Legendary" values uniform "true", "false", or "unknown"
 	df = make_legendary_uniform(df)
+
+	df = np.processGeneration(df)
+	df = np.removeDuplicates(df)
+	df = np.removeWorthlessAttributes(df)
 
 	# Output the updated dataframe to a new csv
 	df.to_csv(OUTPUT_DATA_FILE_NAME)
