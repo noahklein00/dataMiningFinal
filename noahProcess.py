@@ -13,21 +13,24 @@ def processGeneration(df):
     df.loc[:, ('Generation')] = generationCol
     generationCol = df.loc[:, ('Generation')].copy()
     print(generationCol.unique())
+    return df
 
 def removeDuplicates(df):
     # 395 is Walnut, 715 is duplicate of KeldeoResolute Forme
     df.drop(labels=[395, 715], axis=0, inplace=True)
     df.reset_index(drop=True, inplace=True)
+    return df
 
 def removeWorthlessAttributes(df):
     del df["ID"]
     del df["Name"]
     del df["EyeColor"]
     del df["Legendary"]
+    return df
 
-if __name__ == "__main__":
-    df = pd.read_csv("Pokemon.csv")
-    processGeneration(df)
-    removeDuplicates(df)
-    removeWorthlessAttributes(df)
-    print(df)
+# if __name__ == "__main__":
+#     df = pd.read_csv("Pokemon.csv")
+#     processGeneration(df)
+#     removeDuplicates(df)
+#     removeWorthlessAttributes(df)
+#     print(df)
